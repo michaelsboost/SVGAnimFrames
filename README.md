@@ -16,6 +16,8 @@ How To Use:
   3. Export your SVG and then grab it's code (If you don't know how you can load the SVG in your browser you can use [WeaveShare](https://michaelsboost.github.io/WeaveShare) to grab it's code as it **needs** to be embedded in order for SVGAnimFrames to grab it's frames).  <br><br>
   4. Add SVGAnimFrames script! <br>ex. `<script src="SVGAnimFrames.js"></script>` <br>(or SVGAnimFrames-jquery.js) before your closing body tag.  <br><br>
   5. Now in a new script before your closing body tag. <br>You can run SVGAnimFrames with 1 line of code. <br>`SVGAnimFrames("#animate svg", "repeat", "40", "1000");`. <br><br>If you do not want your animation to repeat replace repeat with no-repeat   <br><br>40 tells SVGAnimFrames how many milliseconds to change to the next frame.   <br><br>100 tells SVGAnimFrames how many milliseconds the animation waits to start the animation over.
+  
+**NOTE:** Currently SVGAnimFrames only works with 1 animation. Meaning you cannot call the `SVGAnimFrames()` function twice for two+ animations on the same page.
 
 Development
 -------------
