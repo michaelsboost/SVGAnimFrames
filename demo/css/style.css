@@ -9,28 +9,39 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  color: #fff;
+  font-family: Lato;
   background: #26232f;
   text-align: center;
 }
-#animate {
-  width: 100%;
-  height: 100%;
-  color: #fff;
-  font-family: Lato;
-}
-#animate h3, #animate p {
+h3, p {
   position: absolute;
   width: 100%;
   z-index: 1;
 }
-#animate svg {
-  height: 100%;
-}
-#animate h3 {
+h3 {
   top: 1em;
 }
-#animate p {
+p {
   bottom: 1em;
+}
+.animate {
+  width: 100%;
+  height: 100%;
+}
+.animate svg {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.table {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.cell {
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .hide {

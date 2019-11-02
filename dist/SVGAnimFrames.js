@@ -13,11 +13,16 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
   var detectFrame = parseInt(document.querySelectorAll(elm + " > g > g").length);
   var totalFrames = parseInt(document.querySelectorAll(elm + " > g > g").length);
   
-  // restart timer
-  function restartSVGAnim() {
+  // kill animation
+  function killAnim() {
     counter = 0;
     detectFrame = 0;
     clearInterval(intervalID);
+  }
+  
+  // restart timer
+  function restartSVGAnim() {
+    killAnim();
     intervalID = setInterval(animateSVGFrames, frametime);
   }
   
@@ -33,6 +38,9 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
     
     // only show active frame
     for (i = 0; i < totalFrames; i++) {
+      if (counter > totalFrames) {
+        return false;
+      }
       document.querySelectorAll(elm + " > g > g")[i].style.display = "none";
       document.querySelectorAll(elm + " > g > g")[detectFrame].style.display = "block";
     }
@@ -42,10 +50,13 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
       // if user states no-repeat
       if (counter === totalFrames) {
         // end of animation
-        clearInterval(intervalID);
-        counter = totalFrames;
-        detectFrame = totalFrames;
         for (i = 0; i < totalFrames; i++) {
+          if (counter > totalFrames) {
+            clearInterval(intervalID);
+            counter = 0;
+            detectFrame = totalFrames;
+            return false;
+          }
           document.querySelectorAll(elm + " > g > g")[i].style.display = "none";
           document.querySelectorAll(elm + " > g > g")[detectFrame].style.display = "block";
         }

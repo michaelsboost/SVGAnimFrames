@@ -13,11 +13,16 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
   var detectFrame = parseInt($(elm + " > g > g").length);
   var totalFrames = parseInt($(elm + " > g > g").length);
   
-  // restart timer
-  function restartSVGAnim() {
+  // kill animation
+  function killAnim() {
     counter = 0;
     detectFrame = 0;
     clearInterval(intervalID);
+  }
+  
+  // restart timer
+  function restartSVGAnim() {
+    killAnim();
     intervalID = setInterval(animateSVGFrames, frametime);
   }
   
@@ -31,6 +36,9 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
     $(elm + " > g > g *").removeAttr("vector-effect");
 
     // only show active frame
+    if (counter > totalFrames) {
+      return false;
+    }
     $(elm + " > g > g").hide().eq(detectFrame).show();
     
     // detect end of animation
@@ -38,9 +46,12 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
       // if user states no-repeat
       if (counter === totalFrames) {
         // end of animation
-        clearInterval(intervalID);
-        counter = totalFrames;
-        detectFrame = totalFrames;
+        if (counter > totalFrames) {
+          clearInterval(intervalID);
+          counter = 0;
+          detectFrame = totalFrames;
+          return false;
+        }
         $(elm + " > g > g").hide().eq(detectFrame).show();
       }
     } else {
@@ -62,7 +73,3 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
   // initiate SVG Frame by Frame animation
   intervalID = setInterval(animateSVGFrames, frametime);
 };
-
-// call SVG Frame by Frame animation
-// SVGAnimFrames("#animate svg", "repeat");
-// SVGAnimFrames("#animate svg", "no-repeat");
