@@ -8,6 +8,11 @@ License
 
 MIT
 
+Version
+-------------
+
+0.0.1
+
 How To Use:
 -------------
 

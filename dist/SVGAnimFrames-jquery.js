@@ -1,3 +1,11 @@
+/*
+  Version: 0.0.1
+  SVGAnimFrames, copyright (c) by Michael Schwartz
+  Distributed under an MIT license: https://github.com/michaelsboost/SVGAnimFrames/blob/gh-pages/LICENSE
+  
+  This is SVGAnimFrames (https://michaelsboost.github.io/SVGAnimFrames/), SVG Frame By Frame Animation
+*/
+
 function SVGAnimFrames(elm, repeat, frametime, delay) {
   var counter = 0;
   
