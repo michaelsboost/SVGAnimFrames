@@ -1,4 +1,4 @@
-SVGAnimFrames: SVG Frame By Frame Animation
+SVGAnimFrames
 ===================
 
 I created SVGAnimFrames because I wanted to be able to make frame by frame animations within Gravit Designer using 1 line of code.
