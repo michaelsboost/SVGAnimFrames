@@ -202,6 +202,9 @@
     
     <script src="dist/SVGAnimFrames.js"></script>
     <script>
+      animRate.style.width  = ((animRate.value.length + 1) * 22) + "px";
+      animDelay.style.width = ((animDelay.value.length + 1) * 22) + "px";
+      
       function callAnimation() {
         SVGAnimFrames("#animate svg", repeatAnim.value, animRate.value, animDelay.value);
       }
@@ -224,6 +227,8 @@
         callAnimation();
       }
       animRate.onkeydown  = function(e) {
+        this.style.width  = ((this.value.length + 1) * 22) + "px";
+        
         if (e.shiftKey && e.which === 38) {
           this.value = parseInt(parseInt(this.value) + 10);
           e.preventDefault();
@@ -247,6 +252,8 @@
         callAnimation();
       }
       animDelay.onkeydown = function(e) {
+        this.style.width  = ((this.value.length + 1) * 22) + "px";
+
         if (e.shiftKey && e.which === 38) {
           this.value = parseInt(parseInt(this.value) + 10);
           e.preventDefault();
