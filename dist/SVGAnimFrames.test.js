@@ -28,7 +28,12 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
     for (i = 0; i < document.querySelectorAll(elm + " > g > g").length; i++) {
       var newElm = document.createElementNS("http://www.w3.org/2000/svg", "animate");
       newElm.setAttribute("attributeName", "display");
+      
+      // http://www.joningram.co.uk/article/svg-smil-frame-animation/
+      // These are specific values related to the display property. In this instance we’re asking it to show the square at the beginning and then hide it again for the remainder of the animation. In contrast our circle (which has a value of none;inline;none;none) will be hidden during the first frame, before appearing for frame two, only to disappear again for the remainder of the animation.
+      
       newElm.setAttribute("values", "inline;none;none;none");
+      
       newElm.setAttribute("keyTimes", "0;0.33;0.66;1");
       newElm.setAttribute("dur", frametime + "ms");
       newElm.setAttribute("begin", delay + "ms");
