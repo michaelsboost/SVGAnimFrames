@@ -35,8 +35,8 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
       newElm.setAttribute("values", "inline;none;none;none");
       
       newElm.setAttribute("keyTimes", "0;0.33;0.66;1");
-      newElm.setAttribute("dur", frametime + "ms");
-      newElm.setAttribute("begin", delay + "ms");
+      newElm.setAttribute("dur", frametime + "s");
+      newElm.setAttribute("begin", delay + "s");
       if (repeat === "no-repeat") {
         newElm.setAttribute("repeatCount", "0");
       } else {
