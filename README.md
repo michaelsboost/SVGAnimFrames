@@ -32,6 +32,9 @@ Development
 
 Want to contribute? Great!  
 
+*<u>As of November 4, 2019 SVGAnimFrames is no longer an active project.  
+All updates as of that date and on are solely contributor based implementations.</u>*
+
 You can submit a pull request or simply share the project :)
 
 Of course SVGAnimFrames is free and open source, so you can always fork the project and have fun :)
