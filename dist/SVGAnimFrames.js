@@ -1,5 +1,5 @@
 /*
-  Version: 0.0.1
+  Version: 0.0.2
   SVGAnimFrames, copyright (c) by Michael Schwartz
   Distributed under an MIT license: https://github.com/michaelsboost/SVGAnimFrames/blob/gh-pages/LICENSE
   
@@ -29,28 +29,28 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
   // SVG Frame by Frame animation
   function animateSVGFrames() {
     // frame counter
-    detectFrame = counter++;
+    var detectFrame = counter++;
 
     // remove the vector-effect attribute
-    for (i = 0; i < document.querySelectorAll(elm + " > g > g *").length; i++) {
+    for (var i = 0; i < document.querySelectorAll(elm + " > g > g *").length; i++) {
       document.querySelectorAll(elm + " > g > g *")[i].removeAttribute("vector-effect");
     }
-    
+
     // only show active frame
-    for (i = 0; i < totalFrames; i++) {
+    for (var i = 0; i < totalFrames; i++) {
       if (counter > totalFrames) {
         return false;
       }
       document.querySelectorAll(elm + " > g > g")[i].style.display = "none";
       document.querySelectorAll(elm + " > g > g")[detectFrame].style.display = "block";
     }
-    
+
     // detect end of animation
     if (repeat === "no-repeat") {
       // if user states no-repeat
       if (counter === totalFrames) {
         // end of animation
-        for (i = 0; i < totalFrames; i++) {
+        for (var i = 0; i < totalFrames; i++) {
           if (counter > totalFrames) {
             clearInterval(intervalID);
             counter = 0;
@@ -76,7 +76,7 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
       }
     }
   }
-  
+
   // initiate SVG Frame by Frame animation
-  intervalID = setInterval(animateSVGFrames, frametime);
+  var intervalID = setInterval(animateSVGFrames, frametime);
 };
