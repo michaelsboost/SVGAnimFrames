@@ -6,6 +6,14 @@
   This is SVGAnimFrames (https://michaelsboost.github.io/SVGAnimFrames/), SVG Frame By Frame Animation
 */
 
+/*
+  Version: 0.0.2
+  SVGAnimFrames, copyright (c) by Michael Schwartz
+  Distributed under an MIT license: https://github.com/michaelsboost/SVGAnimFrames/blob/gh-pages/LICENSE
+  
+  This is SVGAnimFrames (https://michaelsboost.github.io/SVGAnimFrames/), SVG Frame By Frame Animation
+*/
+
 function SVGAnimFrames(elm, repeat, frametime, delay) {
   var counter = 0;
   
@@ -54,7 +62,7 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
           if (counter > totalFrames) {
             clearInterval(intervalID);
             counter = 0;
-            detectFrame = totalFrames;
+            var detectFrame = totalFrames;
             return false;
           }
           document.querySelectorAll(elm + " > g > g")[i].style.display = "none";
