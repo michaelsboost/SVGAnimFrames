@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SVGAnimFrames: SVG2GIF Converter</title>
+    <meta charset="UTF-8">
+    <meta http-quiv="X-UA-Compatible" content="IE=9" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SVG frame by frame animation with 1 line of Javascript!">
+    <meta name="author" content="Michael Schwartz">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../favicon-512x512.png">
+    <link rel="stylesheet" href="../libraries/animateCSS/animate.css">
+    <link rel="stylesheet" href="../libraries/polyui/polyui.css">
+    <link rel="stylesheet" href="../libraries/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="../css/polyrise.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/themes/default.min.css">
+    <style>
+      .header {
+        background-color: #ddd;
+      }
+      #dropflash {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: #fff;
+      }
+      #animate svg {
+        width: 100%;
+      }
+      #imgframes, #testframes {
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+      }
+      #imgframes img,
+      #testframes img {
+        display: inline-block;
+        height: 100px;
+        margin-right: 1px;
+      }
+    </style>
+    <meta property="og:url"         content="https://michaelsboost.com/SVGAnimFrames" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="SVGAnimFrames: SVG Frame By Frame Animation" />
+    <meta property="og:description" content="SVG frame by frame animation with 1 line of Javascript!" />
+    <meta property="og:image"       content="https://raw.githubusercontent.com/michaelsboost/SVGAnimFrames/gh-pages/header.png" />
+  </head>
+  <body>
+    <div class="header polyriseblock notgrid w100p h100p" style="display: inline-table; padding: 1em;">
+      <div class="grid h100p">
+        <div class="grid__col--12 nomar h100p">
+          <div class="table">
+            <div class="cell">
+              <div class="panel--centered centered grid__col--12 tc">
+               <div id="grabit">
+                 <div id="animate"></div>
+               </div>
+                <label for="openfile">
+                  <h1 id="read" class="bounceInUp bounceInUp2s blacktxt pointer">
+                    Click/Tap/Drop your SVG image here...
+                  </h1>
+                </label>
+                <h2 class="bounceInUp bounceInUp3s blacktxt" style="font-size: 32px;">
+                  SVGAnimFrames("#animate svg", "<select id="repeatAnim" style="background: none;"><option value="repeat" selected>repeat</option><option value="no-repeat">no-repeat</option></select>", "<input id="animRate" type="number" step="1" min="40" value="40" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">", "<input id="animDelay" type="number" step="1" min="40" value="0" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">")
+                </h2>
+                <p id="btns" class="hide" style="margin-bottom: 4em; text-align: center;">
+                  <a id="grabframes" class="btn--blue bounceInUp bounceInUp3s pointer w100p">
+                    Grab Frames
+                  </a>
+                  <a id="exportgif" class="hide btn--blue bounceInUp bounceInUp3s pointer w100p">
+                    Export Gif
+                  </a>
+                  <a id="exportsequence" class="hide btn--success bounceInUp bounceInUp3s pointer w100p">
+                    Export Image Sequence
+                  </a>
+                </p>
+                
+                <div id="imgframes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="dropflash" class="hide"></div>
+    
+    <!-- readsvg -->
+    <div class="hide">
+      <input type="file" accept="image/svg+xml" id="openfile">
+    </div>
+    <div class="hide">
+      <textarea id="readsvg" placeholder="SVG code goes here..." style="height:200px; resize: vertical;"></textarea>
+<!--      <textarea id="readsvg" placeholder="SVG code goes here..." style="height:200px; resize: vertical;"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 1080 1080" width="1080pt" height="1080pt"><defs><clipPath id="_clipPath_rnavXy55XtZ81vL0buAvl4rCj8tdxIox"><rect width="1080" height="1080"/></clipPath></defs><g clip-path="url(#_clipPath_rnavXy55XtZ81vL0buAvl4rCj8tdxIox)"><rect width="1080" height="1080" style="fill:rgb(71,15,89)" fill-opacity="0"/><rect x="0" y="0" width="1080" height="1080" transform="matrix(1,0,0,1,0,0)" fill="rgb(38,35,47)"/><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="270" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="310" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="350" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="390" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="430" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="470" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="510" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="550" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="590" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="630" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="670" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="710" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="750" r="40" fill="rgb(255,255,255)"/></g><g><path d=" M 188 810 Q 416.028 831 540 831 Q 663.972 831 892 810" fill="none" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="790" r="40" fill="rgb(255,255,255)"/></g><g><path d=" M 188 810 Q 413.86 871 540 871 Q 666.14 871 892 810" fill="none" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="830" r="40" fill="rgb(255,255,255)"/></g><g><path d=" M 188 810 Q 409.641 911 540 911 Q 670.359 911 892 810" fill="none" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="870" r="40" fill="rgb(255,255,255)"/></g><g><path d=" M 188 810 Q 413.86 871 540 871 Q 666.14 871 892 810" fill="none" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="830" r="40" fill="rgb(255,255,255)"/></g><g><path d=" M 188 810 Q 416.028 831 540 831 Q 663.972 831 892 810" fill="none" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="790" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="750" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="710" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="670" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="630" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="590" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="550" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="510" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="470" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="430" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="390" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="350" r="40" fill="rgb(255,255,255)"/></g><g><line x1="188" y1="810" x2="892" y2="810" vector-effect="non-scaling-stroke" stroke-width="10" stroke="rgb(255,255,255)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="3"/><circle vector-effect="non-scaling-stroke" cx="540" cy="310" r="40" fill="rgb(255,255,255)"/></g></g></svg></textarea>-->
+    </div>
+    
+    <script src="../libraries/alertifyjs/alertify.min.js"></script>
+    <script src="../libraries/jszip/Blob.js"></script>
+    <script src="../libraries/jszip/FileSaver.js"></script>
+    <script src="../libraries/jszip/jszip.min.js"></script>
+    <script src="../libraries/jszip/jszip-utils.js"></script>
+    <script src="../libraries/jquery/jquery.js"></script>
+    <script src="../dist/SVGAnimFrames.js"></script>
+    <script src="js/svg2gif.js"></script>
+  </body>
+</html>
