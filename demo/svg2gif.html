@@ -23,6 +23,10 @@
       .header {
         background-color: #ddd;
       }
+      #read i {
+        font-size: 3em;
+        color: #666;
+      }
       #dropflash {
         position: absolute;
         top: 0;
@@ -64,9 +68,7 @@
                </div>
                <div id="showit" class="hide"></div>
                 <label for="openfile">
-                  <h1 id="read" class="bounceInUp bounceInUp2s blacktxt pointer">
-                    Click/Tap/Drop your SVG image here...
-                  </h1>
+                  <h1 id="read" class="bounceInUp bounceInUp2s blacktxt pointer"></h1>
                 </label>
                 <h2 id="scripttxt" class="bounceInUp bounceInUp3s blacktxt hide" style="font-size: 32px;">
                   SVGAnimFrames("#animate svg", "<select id="repeatAnim" style="background: none;"><option value="repeat" selected>repeat</option><option value="no-repeat">no-repeat</option></select>", "<input id="animRate" type="number" step="1" min="40" value="40" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">", "<input id="animDelay" type="number" step="1" min="40" value="0" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">")

@@ -28,7 +28,7 @@ openfile.onchange = function() {
 read.ondragover   = function(e) {
   this.style.opacity = ".5";
 };
-dropflash.ondrop  = function(e) {
+read.ondrop  = function(e) {
   e.preventDefault();
   read.style.opacity = "1";
   dropflash.classList.remove("hide");
@@ -59,7 +59,7 @@ function callAnimation() {
       read.textContent = "svg container group (&lt;g&gt;) not found in dropped SVG..";
     }
   } else {
-    read.textContent = "Click/Tap/Drop your SVG image here...";
+    read.innerHTML = "<i class='fa fa-upload'></i>";
   }
 }
 callAnimation();
