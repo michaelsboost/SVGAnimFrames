@@ -24,6 +24,10 @@ function dropfile(file) {
 };
 openfile.onchange = function() {
   loadfile(this);
+  
+  dropflash.classList.remove("hide");
+  readsvg.value = "";
+  $("#dropflash").fadeOut();
 };
 read.ondragover   = function(e) {
   this.style.opacity = ".5";
