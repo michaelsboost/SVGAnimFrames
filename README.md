@@ -16,7 +16,7 @@ Version
 How To Use:
 -------------
 
-  1. First you need to design your animation using a vector editor. I recommend Gravit Designer!  <br><br>
+  1. First you need to design your animation using a vector editor. I recommend [Gravit Designer](https://www.designer.io/)!  <br><br>
   2. Make sure **ALL** the frames that will be animated are inside a svg group element. ex. `<g clip-path="url(#_clipPath_hello)">`.  <br>See [index.html](https://github.com/michaelsboost/SVGAnimFrames/blob/gh-pages/index.html) as an example.  <br><br>
   3. Export your SVG and then grab it's code (If you don't know how you can load the SVG in your browser you can use [WeaveShare](https://michaelsboost.github.io/WeaveShare) to grab it's code as it **needs** to be embedded in order for SVGAnimFrames to grab it's frames).  <br><br>
   4. Add SVGAnimFrames script! <br>ex. `<script src="SVGAnimFrames.js"></script>` <br>before your closing body tag.  <br><br>
@@ -27,7 +27,7 @@ Development
 
 Want to contribute? Great!  
 
-*<u>As of November 4, 2019 SVGAnimFrames is no longer an active project.  
+*<u>As of November 6, 2019 SVGAnimFrames is no longer an active project.  
 All updates as of that date and on are solely contributor based implementations.</u>*
 
 You can submit a pull request or simply share the project :)
