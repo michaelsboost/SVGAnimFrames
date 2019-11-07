@@ -35,19 +35,34 @@
         right: 0;
         background: #fff;
       }
-      #animate svg {
+      #animate svg,
+      #showprocess svg {
         width: 100%;
       }
-      #imgframes, #testframes {
+      #imgframes {
         white-space: nowrap;
         overflow-y: hidden;
         overflow-x: auto;
       }
-      #imgframes img,
-      #testframes img {
+      #imgframes img {
         display: inline-block;
         height: 100px;
         margin-right: 1px;
+      }
+      
+      #showprocess tspan {
+        stroke: #666;
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        animation: draw 5s linear alternate infinite;
+      }
+      @keyframes draw {
+        0% {
+          stroke-dashoffset: 1000;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
       }
     </style>
     <meta property="og:url"         content="https://michaelsboost.com/SVGAnimFrames" />
@@ -66,7 +81,16 @@
                <div id="grabit">
                  <div id="animate"></div>
                </div>
-               <div id="showit" class="hide"></div>
+               <div id="showit" class="hide">
+                 <img id="result">
+               </div>
+               <div id="showprocess" class="hide">
+                 <svg viewBox="0 0 600 150">
+                   <text y="93.75" x="75" style="line-height:125%;" font-weight="400" font-size="80" font-family="Lato" letter-spacing="0" word-spacing="0" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <tspan>Creating GIF</tspan>
+                    </text>
+                  </svg>
+                </div>
                 <label for="openfile">
                   <h1 id="read" class="bounceInUp bounceInUp2s blacktxt pointer"></h1>
                 </label>
@@ -77,7 +101,7 @@
                   <a id="grabframes" class="btn--blue bounceInUp bounceInUp3s pointer w100p">
                     Grab Frames
                   </a>
-                  <a id="exportgif" class="hide btn--blue bounceInUp bounceInUp3s pointer w100p">
+                  <a id="exportgif" class="hide btn--blue bounceInUp bounceInUp3s pointer w100p" download="download">
                     Export Gif
                   </a>
                   <a id="exportsequence" class="hide btn--success bounceInUp bounceInUp3s pointer w100p">
@@ -113,6 +137,7 @@
     <script src="../libraries/jszip/jszip.min.js"></script>
     <script src="../libraries/jszip/jszip-utils.js"></script>
     <script src="../libraries/jquery/jquery.js"></script>
+    <script src="../libraries/gifshot/gifshot.min.js"></script>
     <script src="../dist/SVGAnimFrames.js"></script>
     <script src="js/svg2gif.js"></script>
   </body>

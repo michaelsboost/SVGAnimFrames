@@ -127,7 +127,6 @@ function getFrames() {
   }
 
   grabframes.classList.add("hide");
-  exportgif.classList.remove("hide");
   exportsequence.classList.remove("hide");
 }
 grabframes.onclick = function() {
@@ -138,11 +137,37 @@ grabframes.onclick = function() {
   }
   grabit.classList.add("hide");
   scripttxt.classList.add("hide");
+
+  showprocess.classList.remove("hide");
+  var images = [];
+  $("#imgframes img").each(function() {
+    images.push($(this).attr("src"));
+  });
+  
+  gifshot.createGIF({
+    images: images,
+    gifWidth: canvas.width,
+    gifHeight: canvas.height,
+//    gifWidth: 100,
+//    gifHeight: 100,
+    interval: animRate.value / 1000, // seconds
+    progressCallback: function(captureProgress) { console.log('progress: ', captureProgress); },
+    completeCallback: function() { console.log('completed!!!'); },
+    numWorkers: 2,
+  },function(obj) {
+    if(!obj.error) {
+      var image = obj.image;
+      result.src = image;
+      showit.classList.remove("hide");
+      exportgif.classList.remove("hide");
+      showprocess.classList.add("hide");
+    }
+  });
 };
 
 // export gif animation
 exportgif.onclick = function() {
-  alertify.message("coming soon...");
+  this.href = result.src;
 };
 
 // download image sequence
