@@ -5,6 +5,7 @@ function loadfile(input) {
   reader.onload = function(e) {
     if (path.toLowerCase().substring(path.length - 4 === ".svg")) {
       readsvg.value = e.target.result;
+      scripttxt.classList.remove("hide");
       callAnimation();
     } else {
       alertify.error("Sorry that file type is not supported. Please only load .svg files.");
@@ -16,6 +17,7 @@ function dropfile(file) {
   var reader = new FileReader();  
   reader.onload = function(e) {            
     readsvg.value = e.target.result;
+    scripttxt.classList.remove("hide");
     callAnimation();
   }        
   reader.readAsText(file,"UTF-8"); 
@@ -126,6 +128,12 @@ function getFrames() {
 }
 grabframes.onclick = function() {
   getFrames();
+  if (window.intervalID != undefined && window.intervalID != 'undefined'){
+    window.clearInterval(window.intervalID);
+    console.log('Timer cleared with id' + window.intervalID);
+  }
+  grabit.classList.add("hide");
+  scripttxt.classList.add("hide");
 };
 
 // export gif animation

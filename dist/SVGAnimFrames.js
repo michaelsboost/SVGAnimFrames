@@ -17,7 +17,7 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
   function killAnim() {
     counter = 0;
     detectFrame = 0;
-    clearInterval(intervalID);
+    clearInterval(window.intervalID);
   }
   
   // restart timer
@@ -52,7 +52,7 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
         // end of animation
         for (var i = 0; i < totalFrames; i++) {
           if (counter > totalFrames) {
-            clearInterval(intervalID);
+            clearInterval(window.intervalID);
             counter = 0;
             var detectFrame = totalFrames;
             return false;
@@ -78,5 +78,5 @@ function SVGAnimFrames(elm, repeat, frametime, delay) {
   }
 
   // initiate SVG Frame by Frame animation
-  var intervalID = setInterval(animateSVGFrames, frametime);
+  window.intervalID = setInterval(animateSVGFrames, frametime);
 };
