@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SVGAnimFrames: SVG2GIF Converter</title>
+    <meta charset="UTF-8">
+    <meta http-quiv="X-UA-Compatible" content="IE=9" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Easily convert your frame by frame SVG animations into GIF animations!">
+    <meta name="author" content="Michael Schwartz">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../favicon-512x512.png">
+    <link rel="stylesheet" href="../libraries/animateCSS/animate.css">
+    <link rel="stylesheet" href="../libraries/polyui/polyui.css">
+    <link rel="stylesheet" href="../libraries/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="../css/polyrise.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/themes/default.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <meta property="og:url"         content="https://michaelsboost.com/SVGAnimFrames" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:title"       content="SVGAnimFrames: SVG Frame By Frame Animation" />
+    <meta property="og:description" content="SVG frame by frame animation with 1 line of Javascript!" />
+    <meta property="og:image"       content="https://raw.githubusercontent.com/michaelsboost/SVGAnimFrames/gh-pages/header.png" />
+  </head>
+  <body>
+    <div class="header polyriseblock notgrid w100p h100p" style="display: inline-table; padding: 1em;">
+      <div class="grid h100p">
+        <div class="grid__col--12 nomar h100p">
+          <div class="table">
+            <div class="cell">
+              <div class="panel--centered centered grid__col--12 tc">
+               <div id="grabit">
+                 <div id="animate"></div>
+               </div>
+               <div id="showit" class="hide">
+                 <img id="result">
+               </div>
+               <div id="showprocess" class="hide">
+                 <svg viewBox="0 0 600 150">
+                   <text y="93.75" x="75" style="line-height:125%;" font-weight="400" font-size="80" font-family="Lato" letter-spacing="0" word-spacing="0" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <tspan>Creating GIF</tspan>
+                    </text>
+                  </svg>
+                </div>
+                <label for="openfile">
+                  <h1 id="read" class="bounceInUp bounceInUp2s blacktxt pointer"></h1>
+                </label>
+                <h2 id="scripttxt" class="bounceInUp bounceInUp3s blacktxt hide" style="font-size: 32px;">
+                  SVGAnimFrames("#animate svg", "<select id="repeatAnim" style="background: none;"><option value="repeat" selected>repeat</option><option value="no-repeat">no-repeat</option></select>", "<input id="animRate" type="number" step="1" min="40" value="40" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">", "<input id="animDelay" type="number" step="1" min="40" value="0" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">")
+                </h2>
+                <p id="btns" class="hide" style="margin-bottom: 4em; text-align: center;">
+                  <a id="grabframes" class="btn--blue bounceInUp bounceInUp3s pointer w100p">
+                    Grab Frames
+                  </a>
+                  <a id="exportgif" class="hide btn--blue bounceInUp bounceInUp3s pointer w100p" download="download">
+                    Export Gif
+                  </a>
+                  <a id="exportsequence" class="hide btn--success bounceInUp bounceInUp3s pointer w100p">
+                    Export Image Sequence
+                  </a>
+                </p>
+                
+                <div id="imgframes"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="dropflash" class="hide"></div>
+    
+    <!-- canvas -->
+    <div class="hide">
+      <canvas id="canvas"></canvas>
+    </div>
+    
+    <!-- readsvg -->
+    <div class="hide">
+      <input type="file" accept="image/svg+xml" id="openfile">
+    </div>
+    <div class="hide">
+      <textarea id="readsvg" placeholder="SVG code goes here..." style="height:200px; resize: vertical;"></textarea>
+    </div>
+    
+    <script src="../libraries/alertifyjs/alertify.min.js"></script>
+    <script src="../libraries/jszip/Blob.js"></script>
+    <script src="../libraries/jszip/FileSaver.js"></script>
+    <script src="../libraries/jszip/jszip.min.js"></script>
+    <script src="../libraries/jszip/jszip-utils.js"></script>
+    <script src="../libraries/jquery/jquery.js"></script>
+    <script src="../libraries/gifshot/gifshot.min.js"></script>
+    <script src="../dist/SVGAnimFrames.js"></script>
+    <script src="js/svg2gif.js"></script>
+  </body>
+</html>

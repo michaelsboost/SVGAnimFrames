@@ -1,0 +1,44 @@
+.header {
+  background-color: #ddd;
+}
+#read i {
+  font-size: 3em;
+  color: #666;
+}
+#dropflash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+}
+#animate svg,
+#showprocess svg {
+  width: 100%;
+}
+#imgframes {
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+#imgframes img {
+  display: inline-block;
+  height: 100px;
+  margin-right: 1px;
+}
+
+#showprocess tspan {
+  stroke: #666;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 5s linear alternate infinite;
+}
+@keyframes draw {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
