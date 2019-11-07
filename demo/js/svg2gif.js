@@ -45,7 +45,7 @@ function callAnimation() {
     if (document.querySelector("#animate > svg").getAttribute("width") || document.querySelector("#animate > svg").getAttribute("height")) {
       document.querySelector("#animate > svg").removeAttribute("width");
       document.querySelector("#animate > svg").removeAttribute("height");
-      alertify.message("Width/Height attributes removed. Please use Viewbox instead!");
+      alertify.message("Reminder use Viewbox for display! The width/height attributes are used only for the image sequence.");
       btns.classList.remove("hide");
     }
 
@@ -65,12 +65,14 @@ callAnimation();
 // get frames
 function getFrames() {
   // scrollTo top
-  window.scrollTo({ top: 0 });
-
+  // window.scrollTo({ top: 0 });
+  
   // reload svg
   imgframes.innerHTML = "";
   animate.innerHTML = readsvg.value;
-  if (document.querySelector("#animate > svg").getAttribute("width") || document.querySelector("#animate > svg").getAttribute("height")) {
+  var width  = document.querySelector("#animate > svg").getAttribute("width");
+  var height = document.querySelector("#animate > svg").getAttribute("height");
+  if (width || height) {
     document.querySelector("#animate > svg").removeAttribute("width");
     document.querySelector("#animate > svg").removeAttribute("height");
   }
@@ -81,10 +83,23 @@ function getFrames() {
 
   // add svg to base64
   function grabFrameImg() {
+    var canvas = document.querySelector("#canvas");
+    var ctx    = canvas.getContext("2d");
+    canvas.width  = width.replace(/pt/g, "").replace(/px/g, "").replace(/%/g, "").replace(/em/g, "").replace(/in/g, "").replace(/cm/g, "").replace(/px/g, "");
+    canvas.height = height.replace(/pt/g, "").replace(/px/g, "").replace(/%/g, "").replace(/em/g, "").replace(/in/g, "").replace(/cm/g, "").replace(/px/g, "");
+    
     var img = new Image();
     var s = new XMLSerializer().serializeToString(document.querySelector("#animate > svg"))
     var encodedData = window.btoa(s);
     img.src = "data:image/svg+xml;base64," + encodedData;
+    
+    img.onload = function() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0);
+      var imgType    = canvas.toDataURL("image/png");
+      img.src = imgType;
+    };
+
     imgframes.appendChild(img);
   }
 
