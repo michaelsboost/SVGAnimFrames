@@ -15,10 +15,12 @@ function loadfile(input) {
 };
 function dropfile(file) {
   var reader = new FileReader();  
-  reader.onload = function(e) {            
-    readsvg.value = e.target.result;
-    scripttxt.classList.remove("hide");
-    callAnimation();
+  reader.onload = function(e) {
+    if (file.type === "image/svg+xml") {
+      readsvg.value = e.target.result;
+      scripttxt.classList.remove("hide");
+      callAnimation();
+    }
   }        
   reader.readAsText(file,"UTF-8"); 
 };
