@@ -31,8 +31,13 @@ openfile.onchange = function() {
 };
 read.ondragover   = function(e) {
   this.style.opacity = ".5";
+  return false;
 };
-read.ondrop  = function(e) {
+read.ondragend    = function() {
+  read.style.opacity = "1";
+  return false;
+};
+read.ondrop       = function(e) {
   e.preventDefault();
   read.style.opacity = "1";
   dropflash.classList.remove("hide");
