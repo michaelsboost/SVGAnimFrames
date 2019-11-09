@@ -3,6 +3,8 @@ SVGAnimFrames
 
 I created SVGAnimFrames because I wanted to be able to make frame by frame animations within Gravit Designer using 1 line of code.
 
+![](https://raw.githubusercontent.com/michaelsboost/SVGAnimFrames/gh-pages/header.gif)
+
 License
 -------------
 
