@@ -39,3 +39,5 @@ Of course SVGAnimFrames is free and open source, so you can always fork the proj
 [![ko-fi](https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0)](https://ko-fi.com/michaelsboost)
 
 If SVGAnimFrames was at all helpful for you. You can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)
+
+**PS:** [Learn how you can do this with GSAP!!](https://codepen.io/akapowl/pen/a3134b964c569b9fffead620eb78cec7)
