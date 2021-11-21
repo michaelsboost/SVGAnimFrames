@@ -65,7 +65,7 @@ function callAnimation() {
     // All SVG frames must be inside of a single group <g>
     if (document.querySelector("#animate > svg > g > g")) {
       read.classList.add("hide");
-      SVGAnimFrames("#animate svg", repeatAnim.value, animRate.value, animDelay.value);
+      SVGAnimFrames("#animate svg", "> g > g", repeatAnim.value, animRate.value, animDelay.value);
     } else {
       read.textContent = "svg container group (&lt;g&gt;) not found in dropped SVG..";
     }

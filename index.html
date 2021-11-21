@@ -1,3 +1,11 @@
+<!--
+  Version: 0.0.3-alpha
+  SVGAnimFrames, copyright (c) by Michael Schwartz
+  Distributed under an MIT license: https://github.com/michaelsboost/SVGAnimFrames/blob/gh-pages/LICENSE
+  
+  This is SVGAnimFrames (https://michaelsboost.github.io/SVGAnimFrames/), SVG Frame By Frame Animation
+-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -159,8 +167,8 @@
                 <h1 class="bounceInUp bounceInUp2s whitetxt">
                   Create frame by frame svg animations with <strong>1 line of code</strong>!
                 </h1>
-                <h2 class="bounceInUp bounceInUp3s whitetxt" style="font-size: 32px;">
-                  SVGAnimFrames("#animate svg", "<select id="repeatAnim" style="background: none;"><option value="repeat" selected>repeat</option><option value="no-repeat">no-repeat</option></select>", "<input id="animRate" type="number" step="1" min="40" value="300" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">", "<input id="animDelay" type="number" step="1" min="40" value="1000" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">")
+                <h2 class="bounceInUp bounceInUp3s whitetxt" style="font-size: 25px;">
+                  SVGAnimFrames("#animate svg", "> g > g", "<select id="repeatAnim" style="background: none;"><option value="repeat" selected>repeat</option><option value="no-repeat">no-repeat</option></select>", "<input id="animRate" type="number" step="1" min="1" value="300" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">", "<input id="animDelay" type="number" step="1" min="1" value="1000" style="background: none; width: 150px; display: inline; padding: 0 0 0 15px; text-align: center;">")
                 </h2>
                 <p style="margin-bottom: 4em;">
                   <a class="btn--blue bounceInUp bounceInUp3s" href="./dist/SVGAnimFrames.js" download>
@@ -209,7 +217,7 @@
       animDelay.style.width = ((animDelay.value.length + 1) * 22) + "px";
       
       function callAnimation() {
-        SVGAnimFrames("#animate svg", repeatAnim.value, animRate.value, animDelay.value);
+        SVGAnimFrames("#animate svg", "> g > g", repeatAnim.value, animRate.value, animDelay.value);
       }
       // call SVG Frame by Frame animation
       callAnimation();

@@ -1,3 +1,11 @@
+<!--
+  Version: 0.0.3-alpha
+  SVGAnimFrames, copyright (c) by Michael Schwartz
+  Distributed under an MIT license: https://github.com/michaelsboost/SVGAnimFrames/blob/gh-pages/LICENSE
+  
+  This is SVGAnimFrames (https://michaelsboost.github.io/SVGAnimFrames/), SVG Frame By Frame Animation
+-->
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -279,8 +287,8 @@
     
     <script src="../dist/SVGAnimFrames.test.js"></script>
     <script>
-      SVGAnimFrames("#header svg", "repeat", "300", "1000");
-      SVGAnimFrames("#bounce svg", "repeat", "40", "0");
+      SVGAnimFrames("#header svg", "> g > g", "repeat", "300", "1000");
+      SVGAnimFrames("#bounce svg", "> g > g", "repeat", "40", "0");
     </script>
   </body>
 </html>

@@ -13,7 +13,7 @@ html, body {
 body {
   color: #fff;
   font-family: Lato;
-  background: #26232f;
+  background: #5a91f0;
   text-align: center;
 }
 .animate {
@@ -43,6 +43,7 @@ p {
   margin: auto;
   width: 100%;
   bottom: 1em;
+  text-shadow: 0 0 2px rgb(34,56,96);
 }
 
 .hide {
