@@ -11,32 +11,19 @@ html, body {
   height: 100%;
 }
 body {
-  color: #fff;
   font-family: Lato;
-  background: #5a91f0;
   text-align: center;
+  color: #fff;
+  background: #5a91f0;
 }
 .animate {
-  position: relative;
-  height: calc(100% - 8em);
-  top: 4em;
-}
-.animate svg {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-  height: auto;
-  width: auto;
-  max-height: 100%;
-  max-width: 100%;
+  top: 0;
+  left: 0;
 }
-h3 {
-  position: absolute;
-  margin: auto;
+.animate, .animate svg {
   width: 100%;
-  top: 1em;
-  z-index: 1;
+  height: 100%;
 }
 p {
   position: absolute;
